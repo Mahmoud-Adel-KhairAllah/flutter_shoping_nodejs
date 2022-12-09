@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_shoping_node_expres_sockit/feature/login/controller/login_controller.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/sp_solid_button/sp_solid_button.dart';
+import 'package:flutter_shoping_node_expres_sockit/foundation/sp_text_field/sp_text_field.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/theme/appColor.dart';
 import 'package:get/get.dart';
 
@@ -56,28 +57,10 @@ class LoginButtonSheet extends StatelessWidget {
           SizedBox(
             height: 35,
           ),
-          Container(
-            height: 46,
-            child: TextField(
-              controller: loginController.loginEditingController,
-              keyboardType: TextInputType.number,
-              style: styleSpan(color: AppColor.captionColor),
-              decoration: InputDecoration(
-                  labelText: 'Phone Number',
-                  labelStyle: styleSpan(),
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.only(top: 15, left: 10),
-                    child: Text(
-                      '+972',
-                      style: styleSpan(),
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(width: 1, color: AppColor.captionColor)),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black45, width: 1))),
-            ),
+          SPTextField(
+            labelText: 'Phone Number',
+            prefixIcon: '+972',
+            keyboardType: TextInputType.number,
           ),
           SizedBox(
             height: 25,

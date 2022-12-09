@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_shoping_node_expres_sockit/feature/login/model/login_model.dart';
-import 'package:flutter_shoping_node_expres_sockit/register/register.dart';
+import 'package:flutter_shoping_node_expres_sockit/feature/register/register.dart';
 import 'package:flutter_shoping_node_expres_sockit/service/network/network_handler/network_handler.dart';
 import 'package:get/get.dart';
 

@@ -5,7 +5,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../theme/appColor.dart';
 
 class SPTextField extends StatelessWidget {
-  const SPTextField({super.key});
+  SPTextField({super.key,this.keyboardType,this.labelText,this.prefixIcon});
+  String? labelText;
+  String? prefixIcon;
+  TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +16,15 @@ class SPTextField extends StatelessWidget {
       height: 46,
       child: TextField(
         //controller: loginController.loginEditingController,
-        keyboardType: TextInputType.number,
+        keyboardType:keyboardType,
         style: styleSpan(color: AppColor.captionColor),
         decoration: InputDecoration(
-            labelText: 'Phone Number',
+            labelText: labelText,
             labelStyle: styleSpan(),
             prefixIcon: Padding(
               padding: const EdgeInsets.only(top: 15, left: 10),
               child: Text(
-                '+972',
+                prefixIcon!,
                 style: styleSpan(),
               ),
             ),
@@ -32,6 +35,7 @@ class SPTextField extends StatelessWidget {
       ),
     );
   }
+
   TextStyle styleSpan(
       {Color color = Colors.black45,
       double size = 13,
