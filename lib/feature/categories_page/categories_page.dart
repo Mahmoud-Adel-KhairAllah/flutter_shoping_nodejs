@@ -9,7 +9,7 @@ class CategoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: LoginButtonSheet(),
+      body: Center(child: Text('CategoriesPage'),)
     );
   }
 }

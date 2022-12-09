@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_shoping_node_expres_sockit/feature/login/controller/login_controller.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/sp_solid_button/sp_solid_button.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/theme/appColor.dart';
 import 'package:get/get.dart';
 
 class LoginButtonSheet extends StatelessWidget {
-  const LoginButtonSheet({super.key});
+  LoginButtonSheet({super.key});
+  var loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class LoginButtonSheet extends StatelessWidget {
                 height: 45,
               ),
               IconButton(
-                icon:Icon(Icons.clear),
+                icon: Icon(Icons.clear),
                 onPressed: () {
                   Get.back();
                 },
@@ -57,6 +59,7 @@ class LoginButtonSheet extends StatelessWidget {
           Container(
             height: 46,
             child: TextField(
+              controller: loginController.loginEditingController,
               keyboardType: TextInputType.number,
               style: styleSpan(color: AppColor.captionColor),
               decoration: InputDecoration(
@@ -97,7 +100,9 @@ class LoginButtonSheet extends StatelessWidget {
             height: 30,
           ),
           SPSolidButton(
-              text: 'CONTINUE', width: MediaQuery.of(context).size.width),
+              onPressed: loginController.login,
+              text: 'CONTINUE',
+              width: MediaQuery.of(context).size.width),
           SizedBox(
             height: 30,
           ),
