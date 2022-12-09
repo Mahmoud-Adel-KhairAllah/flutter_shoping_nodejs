@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/sp_solid_button/sp_solid_button.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/theme/appColor.dart';
+import 'package:get/get.dart';
 
 class LoginButtonSheet extends StatelessWidget {
   const LoginButtonSheet({super.key});
@@ -28,7 +29,12 @@ class LoginButtonSheet extends StatelessWidget {
                 width: 45,
                 height: 45,
               ),
-              Icon(CupertinoIcons.clear)
+              IconButton(
+                icon:Icon(Icons.clear),
+                onPressed: () {
+                  Get.back();
+                },
+              )
             ],
           ),
           SizedBox(
@@ -36,9 +42,13 @@ class LoginButtonSheet extends StatelessWidget {
           ),
           RichText(
             text: TextSpan(children: [
-              TextSpan(text: 'Login', style: styleSpan(color: Colors.black,size: 15)),
+              TextSpan(
+                  text: 'Login',
+                  style: styleSpan(color: Colors.black, size: 15)),
               TextSpan(text: ' or ', style: styleSpan(color: Colors.grey)),
-              TextSpan(text: 'SignUp', style: styleSpan(color: Colors.black,size: 15))
+              TextSpan(
+                  text: 'SignUp',
+                  style: styleSpan(color: Colors.black, size: 15))
             ]),
           ),
           SizedBox(
@@ -62,29 +72,43 @@ class LoginButtonSheet extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(
                       borderSide:
                           BorderSide(width: 1, color: AppColor.captionColor)),
-                          focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.black45,width: 1))
-                          
-                          ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black45, width: 1))),
             ),
           ),
-          SizedBox(height: 25,),
+          SizedBox(
+            height: 25,
+          ),
           RichText(
             text: TextSpan(children: [
-              TextSpan(text: 'By continueing, I agree to the', style: styleSpan(size: 12)),
-              TextSpan(text: ' Term of Use ', style: styleSpan(color:AppColor.accentColor,size: 11)),
+              TextSpan(
+                  text: 'By continueing, I agree to the',
+                  style: styleSpan(size: 12)),
+              TextSpan(
+                  text: ' Term of Use ',
+                  style: styleSpan(color: AppColor.accentColor, size: 11)),
               TextSpan(text: ' & ', style: styleSpan(size: 11.6)),
-              TextSpan(text: 'Privacy & Policy', style: styleSpan(color: AppColor.accentColor,size: 12))
+              TextSpan(
+                  text: 'Privacy & Policy',
+                  style: styleSpan(color: AppColor.accentColor, size: 12))
             ]),
           ),
-          SizedBox(height: 30,),
-          
-          SPSolidButton(text: 'CONTINUE', width: MediaQuery.of(context).size.width),
-          SizedBox(height: 30,),
-
+          SizedBox(
+            height: 30,
+          ),
+          SPSolidButton(
+              text: 'CONTINUE', width: MediaQuery.of(context).size.width),
+          SizedBox(
+            height: 30,
+          ),
           RichText(
             text: TextSpan(children: [
-              TextSpan(text: 'Having trouble logging in?', style: styleSpan(size: 12.5)),
-              TextSpan(text: 'Get help', style: styleSpan(color: AppColor.accentColor,size: 13))
+              TextSpan(
+                  text: 'Having trouble logging in?',
+                  style: styleSpan(size: 12.5)),
+              TextSpan(
+                  text: 'Get help',
+                  style: styleSpan(color: AppColor.accentColor, size: 13))
             ]),
           ),
         ],

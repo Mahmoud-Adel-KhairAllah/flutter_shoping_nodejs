@@ -10,46 +10,50 @@ class ProfileItem extends StatelessWidget {
       required this.image,
       required this.title,
        this.subtitle,
-      this.islast=false
-      
+      this.islast=false,
+      this.onTap
       });
   String image;
   String title;
   String? subtitle;
   bool? islast;
+  Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 68,
-          child: ListTile(
-            leading: SPIcone(assetImage: image),
-            title:(subtitle == null)?Padding(
-              padding: const EdgeInsets.only(top: 18),
-              child: Text(
-                title,
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
-            ):Text(
-                title,
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
-            subtitle: subtitle != null
-                ? Text(subtitle!, style: Theme.of(context).textTheme.caption)
-                : Container(),
-            trailing: InkWell(
-              onTap: () {},
-              child: Icon(
-                CupertinoIcons.chevron_forward,
-                size: 16,
+    return InkWell(
+      onTap:onTap,
+      child: Column(
+        children: [
+          Container(
+            height: 68,
+            child: ListTile(
+              leading: SPIcone(assetImage: image),
+              title:(subtitle == null)?Padding(
+                padding: const EdgeInsets.only(top: 18),
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              ):Text(
+                  title,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              subtitle: subtitle != null
+                  ? Text(subtitle!, style: Theme.of(context).textTheme.caption)
+                  : Container(),
+              trailing: InkWell(
+                onTap: () {},
+                child: Icon(
+                  CupertinoIcons.chevron_forward,
+                  size: 16,
+                ),
               ),
             ),
           ),
-        ),
-        islast==false? Divider():Container()
-      ],
+          islast==false? Divider():Container()
+        ],
+      ),
     );
   }
 }

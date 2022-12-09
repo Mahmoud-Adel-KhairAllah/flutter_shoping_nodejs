@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_shoping_node_expres_sockit/feature/login/login_button_sheet.dart';
 import 'package:flutter_shoping_node_expres_sockit/feature/profile_page/footer_content.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/profileItem/profileItem.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/sp_solid_button/sp_solid_button.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/theme/appColor.dart';
+import 'package:get/get.dart';
 
 class ProfileWithoutLogin extends StatelessWidget {
   const ProfileWithoutLogin({super.key});
@@ -48,7 +50,13 @@ class ProfileWithoutLogin extends StatelessWidget {
               Positioned(
                   bottom: 22,
                   left: 170,
-                  child: SPSolidButton(text: 'LOGIN/SIGNUP',width: MediaQuery.of(context).size.width-210,))
+                  child: SPSolidButton(
+                    onPressed: (){
+                       Get.bottomSheet(LoginButtonSheet());
+                    },
+                    text: 'LOGIN/SIGNUP',
+                    width: MediaQuery.of(context).size.width - 210,
+                  ))
             ],
           ),
         ),
@@ -63,6 +71,9 @@ class ProfileWithoutLogin extends StatelessWidget {
                 image: 'orders.png',
                 title: 'Orders',
                 subtitle: 'Check your order Status',
+                onTap: () {
+                 
+                },
               ),
               ProfileItem(
                 image: 'help.png',
@@ -97,16 +108,20 @@ class ProfileWithoutLogin extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 15,),
-
-         FooterContent(),
-        SizedBox(height: 50,),
-       
-        Text('APP VERSION 0.0.2',
-        style: Theme.of(context).textTheme.overline,
+        SizedBox(
+          height: 15,
         ),
-        SizedBox(height: 80,),
-
+        FooterContent(),
+        SizedBox(
+          height: 50,
+        ),
+        Text(
+          'APP VERSION 0.0.2',
+          style: Theme.of(context).textTheme.overline,
+        ),
+        SizedBox(
+          height: 80,
+        ),
       ],
     );
   }
