@@ -135,6 +135,6 @@ class Register extends StatelessWidget {
   }
 
   void onGenderTap(String gender) {
-    registerContrller.gender.value = gender;
+    registerContrller.gender.value  = gender;
   }
 }
