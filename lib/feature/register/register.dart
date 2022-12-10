@@ -92,13 +92,12 @@ class Register extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-
-                Obx(() => GenderButton(onGender: onGenderTap,
-                gender: registerContrller.gender.value,),),
-                
-
-
-                
+                Obx(
+                  () => GenderButton(
+                    onGender: onGenderTap,
+                    gender: registerContrller.gender.value,
+                  ),
+                ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -122,9 +121,11 @@ class Register extends StatelessWidget {
                 SPSolidButton(
                   text: 'Create Account',
                   width: size.width,
-                  onPressed: () {
-                    formKey.currentState!.validate();
-                  },
+                  onPressed:registerContrller.register,
+                  //  () {
+                  //   formKey.currentState!.validate();
+                  //   registerContrller.register;
+                  // },
                 )
               ],
             ),
@@ -135,6 +136,6 @@ class Register extends StatelessWidget {
   }
 
   void onGenderTap(String gender) {
-    registerContrller.gender.value  = gender;
+    registerContrller.gender.value = gender;
   }
 }

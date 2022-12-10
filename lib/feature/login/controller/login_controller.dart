@@ -17,7 +17,7 @@ class LoginController extends GetxController {
      Get.snackbar('title',  data['msg']);
     
     log('message' + data['msg']);
-    if (data['msg'] == 'register succesful') {
+    if (data['msg'] == 'register') {
       Get.to(Register());
     }
     

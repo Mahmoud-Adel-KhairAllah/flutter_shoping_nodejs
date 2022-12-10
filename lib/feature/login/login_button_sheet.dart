@@ -88,10 +88,10 @@ class LoginButtonSheet extends StatelessWidget {
                 height: 30,
               ),
               SPSolidButton(
-                  // onPressed: loginController.login,
-                  onPressed: () {
-                    Get.to(Register());
-                  },
+                  onPressed: loginController.login,
+                  // onPressed: () {
+                  //   Get.to(Register());
+                  // },
                   text: 'CONTINUE',
                   width: MediaQuery.of(context).size.width),
               SizedBox(
