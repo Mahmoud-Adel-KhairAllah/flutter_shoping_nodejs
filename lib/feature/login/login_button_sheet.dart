@@ -1,25 +1,26 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
+import 'package:flutter_shoping_node_expres_sockit/feature/landing_page/controller/landingpage_controller.dart';
 import 'package:flutter_shoping_node_expres_sockit/feature/login/controller/login_controller.dart';
-import 'package:flutter_shoping_node_expres_sockit/feature/register/register.dart';
+
 import 'package:flutter_shoping_node_expres_sockit/foundation/sp_solid_button/sp_solid_button.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/sp_text_field/sp_text_field.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/theme/appColor.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class LoginButtonSheet extends StatelessWidget {
   LoginButtonSheet({super.key});
   var loginController = Get.put(LoginController());
+  // ignore: non_constant_identifier_names
+  var landingpage_controller = Get.put(LandingPageController());
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height / 2,
       color: AppColor.whiteColor,
-      padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
       child: ListView(
         children: [
           Column(
@@ -36,14 +37,14 @@ class LoginButtonSheet extends StatelessWidget {
                     height: 45,
                   ),
                   IconButton(
-                    icon: Icon(Icons.clear),
+                    icon: const Icon(Icons.clear),
                     onPressed: () {
                       Get.back();
                     },
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               RichText(
@@ -57,16 +58,16 @@ class LoginButtonSheet extends StatelessWidget {
                       style: styleSpan(color: Colors.black, size: 15))
                 ]),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 35,
               ),
               SPTextField(
                 textEditingController: loginController.loginEditingController,
                 labelText: 'Phone Number',
                 prefixIcon: '+972',
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.phone,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               RichText(
@@ -88,13 +89,13 @@ class LoginButtonSheet extends StatelessWidget {
                 height: 30,
               ),
               SPSolidButton(
-                  onPressed: loginController.login,
-                  // onPressed: () {
-                  //   Get.to(Register());
-                  // },
+                  onPressed: () async {
+                    await loginController.login();
+                    landingpage_controller.checkLogin();
+                  },
                   text: 'CONTINUE',
                   width: MediaQuery.of(context).size.width),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               RichText(

@@ -28,9 +28,12 @@ class RegisterContrller extends GetxController {
         hint: hintTextController.text);
     var response = await NetworkHandler.post(
         registerModelToJson(registerModel), 'login/register');
-    log(response);
+   
     var data = json.decode(response);
+    if(data['token']!=null){
+ log('response------------------>'+response);
     await NetworkHandler.storeToken(data['token']);
+    }
     Get.offAll(LandingPage());
   }
 }

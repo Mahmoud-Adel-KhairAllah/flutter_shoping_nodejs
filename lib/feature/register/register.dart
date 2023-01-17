@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_shoping_node_expres_sockit/feature/login/controller/login_controller.dart';
+import 'package:flutter_shoping_node_expres_sockit/feature/login/login_button_sheet.dart';
 import 'package:flutter_shoping_node_expres_sockit/feature/register/controller/register_controller.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/gender_button/gender_button.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/sp_solid_button/sp_solid_button.dart';
@@ -34,100 +35,110 @@ class Register extends StatelessWidget {
             style: TextStyle(
                 fontSize: 16, color: Colors.black, fontWeight: FontWeight.w600),
           )),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Mobile Number',
-                          style: TextStyle(
-                              color: AppColor.captionColor, fontSize: 11),
-                        ),
-                        Text(
-                          loginController.loginEditingController.text
-                              .toString(),
-                          style: TextStyle(color: Colors.black87),
-                        )
-                      ],
-                    ),
-                    CircleAvatar(
-                      backgroundColor: Colors.teal,
-                      radius: 12,
-                      child: Icon(Icons.check),
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                SPTextField(
-                  labelText: 'Create Password',
-                  textEditingController:
-                      registerContrller.passwordTextController,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                SPTextField(
-                  labelText: 'Full Name (Optional)',
-                  textEditingController:
-                      registerContrller.fullNameTextController,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                SPTextField(
-                  labelText: 'Email  (Optional)',
-                  textEditingController: registerContrller.emailTextController,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Obx(
-                  () => GenderButton(
-                    onGender: onGenderTap,
-                    gender: registerContrller.gender.value,
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Mobile Number',
+                            style: TextStyle(
+                                color: AppColor.captionColor, fontSize: 11),
+                          ),
+                          Text(
+                            loginController.loginEditingController.text
+                                .toString(),
+                            style: const TextStyle(color: Colors.black87),
+                          )
+                        ],
+                      ),
+                      const CircleAvatar(
+                        backgroundColor: Colors.teal,
+                        radius: 12,
+                        child: Icon(Icons.check),
+                      )
+                    ],
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                SPTextField(
-                  prefixIcon: '+972',
-                  hintText: '599123456',
-                  labelText: 'Alternate Mobile Number',
-                  textEditingController:
-                      registerContrller.mobileNumberTextController,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                SPTextField(
-                  labelText: 'Hint Name',
-                  textEditingController: registerContrller.hintTextController,
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
-                SPSolidButton(
-                  text: 'Create Account',
-                  width: size.width,
-                  onPressed:registerContrller.register,
-                  //  () {
-                  //   formKey.currentState!.validate();
-                  //   registerContrller.register;
-                  // },
-                )
-              ],
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SPTextField(
+                    keyboardType:TextInputType.visiblePassword ,
+                     isSecure: true,
+                    labelText: 'Create Password',
+                    textEditingController:
+                        registerContrller.passwordTextController,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SPTextField(
+                    keyboardType: TextInputType.name,
+                    labelText: 'Full Name (Optional)',
+                    textEditingController:
+                        registerContrller.fullNameTextController,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SPTextField(
+                    keyboardType: TextInputType.emailAddress,
+                    labelText: 'Email  (Optional)',
+                    textEditingController: registerContrller.emailTextController,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Obx(
+                    () => GenderButton(
+                      onGender: onGenderTap,
+                      gender: registerContrller.gender.value,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SPTextField(
+                    keyboardType: TextInputType.phone,
+                   
+                    prefixIcon: '+972',
+                    hintText: '599123456',
+                    labelText: 'Alternate Mobile Number',
+                    textEditingController:
+                        registerContrller.mobileNumberTextController,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SPTextField(
+                    keyboardType: TextInputType.name,
+                    labelText: 'Hint Name',
+                    textEditingController: registerContrller.hintTextController,
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  SPSolidButton(
+                    text: 'Create Account',
+                    width: size.width,
+                    onPressed:() {
+                      if(formKey.currentState!.validate()){
+                        registerContrller.register();
+                      }
+                    },
+                    
+                  )
+                ],
+              ),
             ),
           ),
         ),

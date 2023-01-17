@@ -11,12 +11,19 @@ class NetworkHandler {
   static Future<String> post(var body, String endpoint) async {
     var response = await client.post(buildUrl(endpoint),
         body: body, headers: {"Content-type": "application/json"});
-    log('response=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>' + response.body);
+    return response.body;
+  }
+
+  static Future<dynamic> get(String endpoint, String? token) async {
+    var response = await client.get(buildUrl(endpoint), headers: {
+      "Content-type": "application/json",
+      "authorization": "Bearer $token"
+    });
     return response.body;
   }
 
   static Uri buildUrl(String endpoint) {
-    String host = "http://192.168.1.106:20000/";
+    String host = "http://10.0.0.28:20000/";
     final apiPath = host + endpoint;
     return Uri.parse(apiPath);
   }

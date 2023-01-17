@@ -1,30 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:flutter_shoping_node_expres_sockit/feature/categories_page/categories_page.dart';
+import 'package:flutter_shoping_node_expres_sockit/feature/categories_page/controller/category_details_controller.dart';
 import 'package:flutter_shoping_node_expres_sockit/feature/home_page/home_page.dart';
+import 'package:flutter_shoping_node_expres_sockit/feature/landing_page/controller/landingpage_controller.dart';
+import 'package:flutter_shoping_node_expres_sockit/feature/product/controller/product_details_controller.dart';
 import 'package:flutter_shoping_node_expres_sockit/feature/profile_page/profile_page.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/sp_icon/sp_icon.dart';
 import 'package:flutter_shoping_node_expres_sockit/foundation/theme/appColor.dart';
+import 'package:get/get.dart';
+
+
 
 class LandingPage extends StatefulWidget {
-  LandingPage({super.key});
+  const LandingPage({super.key});
 
   @override
   State<LandingPage> createState() => _LandingPageState();
 }
 
 class _LandingPageState extends State<LandingPage> {
-  List<Widget> pages = [HomePage(), CategoriesPage(), ProfilePage()];
+  List<Widget> pages =  [HomePage(), CategoriesPage(), ProfilePage()];
   int currentIndex = 0;
-
+  LandingPageController landingPageController=Get.put(LandingPageController());
+   ProductDetailsController productDetailsController=Get.put(ProductDetailsController());
+  CategoryDetailsController categoryDetailsController=Get.put(CategoryDetailsController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentIndex,
           selectedItemColor: AppColor.accentColor,
-          selectedLabelStyle: TextStyle(fontSize: 20),
+          selectedLabelStyle: const TextStyle(fontSize: 20),
           onTap: (value) {
             setState(() {
               currentIndex = value;
